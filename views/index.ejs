@@ -8,10 +8,23 @@
 <body>
     <h1>Book Tracker</h1>
 
+    <h3>Add Books</h3>
+    <form action="/add" method="POST">
+        <label for="bookTitle">Title</label>
+        <input type="text" name="bookTitle">
+
+        <label for="bookAuthor">Author</label>
+        <input type="text" name="bookAuthor">
+
+        <button type="submit">Add</button>
+    </form>
+
     <h3>Books</h3>
-    <% for(var i = 0; i < books.length; i++){ %>
-        <p><%= books[i].title %> | <%= books[i].author %></p>
-    <% } %>
+    <ol>
+        <% for(var i = 0; i < books.length; i++){ %>
+            <li><%= books[i].title %> | <%= books[i].author %></li>
+        <% } %>
+    </ol>
 
     
 </body>

@@ -25,6 +25,14 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", { books : books });
 });
 
+app.post("/add", async (req, res) => {
+    var title = req.body.bookTitle;
+    var author = req.body.bookAuthor;
+    await db.query("INSERT INTO books (title, author) VALUES ($1, $2)", [title, author]);
+    console.log("Book Added.");
+    res.redirect("/");
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
