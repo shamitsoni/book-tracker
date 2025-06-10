@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tracker</title>
+</head>
+<body>
+    <h1>Book Tracker</h1>
+
+    <h3>Books</h3>
+    <% for(var i = 0; i < books.length; i++){ %>
+        <p><%= books[i].title %> | <%= books[i].author %></p>
+    <% } %>
+
+    
+</body>
+</html>
