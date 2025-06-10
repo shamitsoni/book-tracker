@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const db = new pg.Client({
     user: "postgres",
@@ -30,6 +31,13 @@ app.post("/add", async (req, res) => {
     var author = req.body.bookAuthor;
     await db.query("INSERT INTO books (title, author) VALUES ($1, $2)", [title, author]);
     console.log("Book Added.");
+    res.redirect("/");
+});
+
+app.post("/delete", async (req, res) => {
+    var id = req.body.removeBook;
+    await db.query("DELETE FROM books WHERE id = $1", [id]);
+    console.log("Book Removed");
     res.redirect("/");
 });
 

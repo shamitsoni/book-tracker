@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
     <h1>Book Tracker</h1>
 
@@ -20,12 +22,13 @@
     </form>
 
     <h3>Books</h3>
-    <ol>
-        <% for(var i = 0; i < books.length; i++){ %>
-            <li><%= books[i].title %> | <%= books[i].author %></li>
-        <% } %>
-    </ol>
-
-    
+    <% for(var i = 0; i < books.length; i++){ %>
+        <div class="container">
+            <p><%= books[i].title %> | <%= books[i].author %></p>
+            <form action="/delete" method="POST">
+                <button type="submit" onchange="this.form.submit()" name="removeBook" value="<%= books[i].id %>" style="margin-left: 10px;">Remove</button>
+            </form>
+        </div>
+    <% } %>    
 </body>
 </html>
